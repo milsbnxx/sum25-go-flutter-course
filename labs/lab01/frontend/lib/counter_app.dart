@@ -10,30 +10,64 @@ class CounterApp extends StatefulWidget {
 class _CounterAppState extends State<CounterApp> {
   int _counter = 0;
 
-  void _increment() => setState(() => _counter++);
-  void _decrement() => setState(() => _counter--);
-  void _reset()     => setState(() => _counter = 0);
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
+
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Counter App'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: _resetCounter,
+            tooltip: 'Reset Counter',
+          ),
+        ],
+      ),
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: const TextStyle(fontSize: 48),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 32),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(onPressed: _decrement, child: const Icon(Icons.remove)),
-                ElevatedButton(onPressed: _reset,     child: const Icon(Icons.refresh)),
-                ElevatedButton(onPressed: _increment, child: const Icon(Icons.add)),
+                FloatingActionButton(
+                  onPressed: _decrementCounter,
+                  tooltip: 'Decrement',
+                  heroTag: 'decrement',
+                  mini: true,
+                  child: const Icon(Icons.remove),
+                ),
+                const SizedBox(width: 32),
+                FloatingActionButton(
+                  onPressed: _incrementCounter,
+                  tooltip: 'Increment',
+                  heroTag: 'increment',
+                  mini: true,
+                  child: const Icon(Icons.add),
+                ),
               ],
             ),
           ],

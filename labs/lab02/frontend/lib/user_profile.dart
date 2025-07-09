@@ -5,7 +5,7 @@ import 'user_service.dart';
 class UserProfile extends StatefulWidget {
   final UserService userService;
 
-  const UserProfile({Key? key, required this.userService}) : super(key: key);
+  const UserProfile({super.key, required this.userService});
 
   @override
   State<UserProfile> createState() => _UserProfileState();

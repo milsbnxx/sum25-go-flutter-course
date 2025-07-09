@@ -6,7 +6,7 @@ import 'dart:async';
 class ChatScreen extends StatefulWidget {
   final ChatService chatService;
 
-  const ChatScreen({Key? key, required this.chatService}) : super(key: key);
+  const ChatScreen({super.key, required this.chatService});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -16,7 +16,7 @@ class _ChatScreenState extends State<ChatScreen> {
   late TextEditingController _controller;
   StreamSubscription<String>? _subscription;
 
-  List<String> _messages = [];
+  final List<String> _messages = [];
   bool _loading = true;
   String? _error;
 

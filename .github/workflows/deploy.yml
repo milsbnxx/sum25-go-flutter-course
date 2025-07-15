@@ -3,7 +3,7 @@ name: Deploy Flutter Web to GitHub Pages
 on:
   push:
     branches:
-      - lab07-nagimova-adeliya
+      - lab07-yamilova-sabina
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,6 @@ jobs:
           channel: stable
           flutter-version: 3.32.4
 
-      - name: Install dependencies
         run: flutter pub get
         working-directory: labs/lab07/frontend
 
